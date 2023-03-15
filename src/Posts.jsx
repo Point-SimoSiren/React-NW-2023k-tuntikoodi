@@ -18,11 +18,13 @@ const [posts, setPosts] = useState([])
        <h2>Typicode Posts</h2>
 
        {posts && posts.map(p => (
+        
         <div className='post'>
             <h4>{p.title}</h4>
             <p>{p.body}</p>
         </div>
-       ))}
+       )
+       )}
 
      </>
    )
