@@ -1,6 +1,6 @@
 import "./App.css"
 import React, {useState} from 'react'
-import CustomerService from './Services/Customer'
+//import CustomerService from './Services/Customer'
 
 
 // Tämä komponetti renderöidään CustomerList komponentin loopin jokaisella kierroksella
@@ -12,7 +12,7 @@ const Customer = ({customer}) => {
 
 return(
     <>
-        <h3 onClick={() => setShowDetails(!showDetails)}>{c.companyName} from {c.city}, {c.country}</h3>
+        <h3 onClick={() => setShowDetails(!showDetails)}>{customer.companyName} from {customer.city}, {customer.country}</h3>
 
         {showDetails && 
             <div className="customerDetails">

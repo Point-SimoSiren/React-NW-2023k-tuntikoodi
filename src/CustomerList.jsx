@@ -1,6 +1,7 @@
 import "./App.css"
 import React, {useState, useEffect} from 'react'
 import CustomerService from './Services/Customer'
+import Customer from "./Customer"
 
 
 const CustomerList = () => {
@@ -19,8 +20,8 @@ return(
     <>
         <h2>Customers</h2>
  
-        {customers && customers.map(c => (
-                <h3>{c.companyName} from {c.city}, {c.country}</h3>
+        {customers && customers.map(cust => (
+              <Customer customer={cust} />
         ))
     }
     

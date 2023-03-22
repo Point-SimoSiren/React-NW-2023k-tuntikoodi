@@ -1,3 +1,12 @@
+# Use git
+
+git add .
+git commit -m "viesti"
+(1. kerralla git remote add origin etärepon_osoite)
+git push*
+(*1. kerralla git push -u origin master)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
