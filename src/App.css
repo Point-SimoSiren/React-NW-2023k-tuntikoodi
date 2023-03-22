@@ -12,3 +12,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+  .customerDetails {
+    background-color: chocolate;
+    border-style: solid;
+    width: 40%;
+    margin: auto;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    padding-left: 10%;
+  }
+
