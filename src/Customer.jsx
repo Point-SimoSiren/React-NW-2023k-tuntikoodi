@@ -12,7 +12,7 @@ const Customer = ({customer}) => {
 
 return(
     <>
-        <h3>{c.companyName} from {c.city}, {c.country}</h3>
+        <h3 onClick={() => setShowDetails(!showDetails)}>{c.companyName} from {c.city}, {c.country}</h3>
 
         {showDetails && 
             <div className="customerDetails">
@@ -43,4 +43,4 @@ return(
 
 }
 
-export default CustomerList
+export default Customer
