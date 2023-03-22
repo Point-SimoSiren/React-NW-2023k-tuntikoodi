@@ -1,9 +1,11 @@
 import './App.css'
 import React, {useState, useEffect} from 'react'
 
+
 const Posts = () => {
 // State
 const [posts, setPosts] = useState([])
+const [showPosts, setShowPosts] = useState(false)
 
 // UseEffect funktiota kutsutaan automaattisesti kun komponentti latautuu
  useEffect(() => {
@@ -12,12 +14,11 @@ const [posts, setPosts] = useState([])
     .then(oliot => setPosts(oliot))
  }, [])
 
-
    return (
      <>
-       <h2>Typicode Posts</h2>
+       <h2 onClick={() => setShowPosts(!showPosts)}>Typicode Posts</h2>
 
-       {posts && posts.map(p => (
+       {showPosts && posts && posts.map(p => (
         
         <div className='post'>
             <h4>{p.title}</h4>
