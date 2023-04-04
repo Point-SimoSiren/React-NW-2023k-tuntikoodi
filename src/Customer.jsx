@@ -1,6 +1,7 @@
 import "./App.css"
 import React, {useState} from 'react'
 import CustomerService from './Services/Customer'
+import CustomerEdit from "./CustomerEdit"
 
 // Tämä komponetti renderöidään CustomerList komponentin loopin jokaisella kierroksella
 // ja ottaa propsina vastaan yhden yksittäisen customerin
@@ -8,7 +9,7 @@ const Customer = ({customer, setMessage, setIsPositive, setShowMessage, x, reloa
 
     // Komponentin tila
     const [showDetails, setShowDetails] = useState(false)
-
+    const [muokkaustila, setMuokkaustila] = useState(false)
 
     // Poistofunktio
     const deleteCustomer = (CustToDelete) => {
@@ -49,9 +50,13 @@ const Customer = ({customer, setMessage, setIsPositive, setShowMessage, x, reloa
 
 return(
     <>
-       {showDetails && <h3 style={{color: 'red', fontSize: 30}} onClick={() => setShowDetails(!showDetails)}>{customer.companyName} from {customer.city}, {customer.country}</h3>}
+       {showDetails && <h3 style={{color: 'red', fontSize: 30}} onClick={() => setShowDetails(!showDetails) + setMuokkaustila(false)}>
+        {customer.companyName} from {customer.city}, {customer.country}</h3>}
 
         {!showDetails && <h3 onClick={() => setShowDetails(!showDetails)}>{customer.companyName} from {customer.city}, {customer.country}</h3>}
+
+
+      
 
 
         {showDetails && 
@@ -59,9 +64,13 @@ return(
                 <h3>{customer.companyName}</h3>
 
                 <button onClick={() => deleteCustomer(customer)}>Delete</button>
-                <button>Edit</button>
+                <button onClick={() => setMuokkaustila(true)}>Edit</button>
 
-                <table>
+                {muokkaustila && <CustomerEdit muokattavaAsiakas={customer}
+                setMuokkaustila={setMuokkaustila} x={x} reload={reload} setShowMessage={setShowMessage} 
+                setMessage={setMessage} setIsPositive={setIsPositive} />}
+
+                {muokkaustila === false && <table>
                     <thead>
                         <tr>
                             <th>Contact Name</th>
@@ -78,7 +87,7 @@ return(
                             <td>{customer.phone}</td>
                         </tr>
                     </tbody>
-                </table>
+                </table>}
             </div>
         
         }

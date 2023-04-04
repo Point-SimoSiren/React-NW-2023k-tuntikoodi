@@ -35,6 +35,9 @@ const handleSubmit = (event) => {
       phone: newPhone,
       fax: newFax
   }
+
+// debug
+ console.log(editedCustomer)
   
   CustomerService.update(editedCustomer)
   .then(response => {

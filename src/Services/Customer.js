@@ -16,6 +16,7 @@ const remove = (id) => {
 }
 
 const update = (object) => {
+    alert("serviceen päästiin. Kyydissä mukana : " + object.companyName)
     return Axios.put(`${baseUrl}/${object.customerId}`, object)
 }
 
