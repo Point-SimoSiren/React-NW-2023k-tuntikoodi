@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import UserList from './UserList'
 
 
 function App() {
@@ -40,6 +41,10 @@ const [isPositive, setIsPositive] = useState(false)
 
             <Route path="/customers" >
                 <CustomerList setShowMessage={setShowMessage} setMessage={setMessage} setIsPositive={setIsPositive} />
+            </Route>
+
+            <Route path="/users" >
+                <UserList setShowMessage={setShowMessage} setMessage={setMessage} setIsPositive={setIsPositive} />
             </Route>
             
             <Route path="/laskuri">
