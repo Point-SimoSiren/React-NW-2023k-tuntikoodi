@@ -13,6 +13,37 @@
   color: white;
 }
 
+.neg {
+  color: red;
+  background: lightgrey;
+  font-size: 36px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10%;
+  width: 70%;
+  margin-left: 15%;
+}
+
+.pos {
+  color: green;
+  background: lightgrey;
+  font-size: 36px;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10%;
+  width: 70%;
+  margin-left: 15%;
+}
+
+
   .customerDetails {
     background-color: chocolate;
     border-style: solid;
@@ -22,4 +53,22 @@
     border-radius: 30px;
     padding-left: 10%;
   }
+
+  #addNew {
+    background-color: chocolate;
+    border-style: solid;
+    width: 20%;
+    margin: auto;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    padding-bottom: 1%;
+  }
+  
+.nappi {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: chocolate;
+  color: white;
+}
 
