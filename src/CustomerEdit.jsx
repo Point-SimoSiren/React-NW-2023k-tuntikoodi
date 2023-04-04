@@ -23,9 +23,9 @@ const [newFax, setNewFax] = useState(muokattavaAsiakas.fax)
 // onSubmit tapahtumankäsittelijä funktio
 const handleSubmit = (event) => {
     event.preventDefault()
-    var newCustomer = {
-      customerId: newCustomerId.toUpperCase(),
-      companyName: newCompanyName,
+    var editedCustomer = {
+      customerId: muokattavaAsiakas.customerId, // <---- Otetaan suoraan propsina tulleesta asiakkaasta, ei muuteta
+      companyName: newCompanyName, // Kaikki muut tiedot tulee statesta ja siis input kentistä
       contactName: newContactName,
       contactTitle: newContactTitle,
       country: newCountry,
@@ -36,7 +36,7 @@ const handleSubmit = (event) => {
       fax: newFax
   }
   
-  CustomerService.create(newCustomer)
+  CustomerService.update(editedCustomer)
   .then(response => {
     if (response.status === 200) {
            
@@ -49,7 +49,7 @@ const handleSubmit = (event) => {
             }, 4000);
 
             reload(!x)
-            setLisäystila(false)
+            setMuokkaustila(false)
     }
 })
 .catch(error => {
@@ -59,7 +59,7 @@ const handleSubmit = (event) => {
 
     setTimeout(() => {
       setShowMessage(false)
-     }, 6000)
+     }, 7000)
   })
 }
 
@@ -67,12 +67,11 @@ const handleSubmit = (event) => {
 return(
     <div id="addNew">
 
-    <h2>Adding new Customer</h2>
+    <h2>Editing Customer {muokattavaAsiakas.companyName}</h2>
 
     <form onSubmit={handleSubmit}>
-    <div>
-             <input type="text" value={newCustomerId} placeholder="ID with 5 capital letters" maxLength="5" minLength="5"
-                 onChange={({ target }) => setNewCustomerId(target.value)} required />
+        <div>
+             <input type="text" value={newCustomerId} disabled />
          </div>
          <div>
              <input type="text" value={newCompanyName} placeholder="Company name"
@@ -112,7 +111,7 @@ return(
          </div>
       
       <input type='submit' value='save' />
-      <input type='button' value='back' onClick={() => setLisäystila(false)} />
+      <input type='button' value='back' onClick={() => setMuokkaustila(false)} />
     </form>
 
  </div>
@@ -120,4 +119,4 @@ return(
 
 }
 
-export default CustomerAdd
+export default CustomerEdit
