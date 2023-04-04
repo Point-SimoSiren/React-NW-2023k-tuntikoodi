@@ -32,14 +32,19 @@ const Customer = ({customer, setMessage, setIsPositive, setShowMessage, x, reloa
 
                 setTimeout(() => {
                     setShowMessage(false)
-                }, 4000)
+                }, 4000)  
+                }
+                })
             .catch(error => {
-                alert(error.message)
+                setMessage(error.response.data)
+                setIsPositive(false)
+                setShowMessage(true)
+                window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
             })
-        
-     }
-    })
-}
+                setTimeout(() => {
+                    setShowMessage(false)
+                }, 7000)  
+        }
     }
 
 return(
