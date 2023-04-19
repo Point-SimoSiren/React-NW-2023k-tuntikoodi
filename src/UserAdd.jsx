@@ -1,6 +1,7 @@
 import "./App.css"
 import React, {useState} from 'react'
 import UserService from './Services/User'
+import md5 from 'md5'
 
 // Otetaan vastaan propsina setLisäystila ( = staten muutosfunktio) kutsuvalta List komponentilta
 const UserAdd = ({setLisäystila, x, reload, setShowMessage, setMessage, setIsPositive}) => {
@@ -21,12 +22,12 @@ const handleSubmit = (event) => {
       firstName: newFirstName,
       lastName: newLastName,
       userName: newUserName,
-      password: newPassword,
+      password: md5(newPassword),
       phone: newPhone,
       accessLevelId: newAccessLevelId
   }
   
-  CustomerService.create(newCustomer)
+  UserService.create(newUser)
   .then(response => {
     if (response.status === 200) {
            
@@ -57,48 +58,33 @@ const handleSubmit = (event) => {
 return(
     <div id="addNew">
 
-    <h2>Adding new Customer</h2>
+    <h2>Adding new User</h2>
 
     <form onSubmit={handleSubmit}>
-    <div>
-             <input type="text" value={newCustomerId} placeholder="ID with 5 capital letters" maxLength="5" minLength="5"
-                 onChange={({ target }) => setNewCustomerId(target.value)} required />
+ 
+         <div>
+             <input type="text" value={newFirstName} placeholder="First name"
+                 onChange={({ target }) => setNewFirstName(target.value)} required />
          </div>
          <div>
-             <input type="text" value={newCompanyName} placeholder="Company name"
-                 onChange={({ target }) => setNewCompanyName(target.value)} required />
+             <input type="text" value={newLastName} placeholder="Last name"
+                 onChange={({ target }) => setNewLastName(target.value)} />
          </div>
          <div>
-             <input type="text" value={newContactName} placeholder="Contact name"
-                 onChange={({ target }) => setNewContactName(target.value)} />
+             <input type="text" value={newUserName} placeholder="Username"
+                 onChange={({ target }) => setNewUserName(target.value)} />
          </div>
          <div>
-             <input type="text" value={newContactTitle} placeholder="Contact title"
-                 onChange={({ target }) => setNewContactTitle(target.value)} />
-         </div>
-         <div>
-             <input type="text" value={newCountry} placeholder="Country"
-                 onChange={({ target }) => setNewCountry(target.value)} />
-         </div>
-         <div>
-             <input type="text" value={newAddress} placeholder="Address"
-                 onChange={({ target }) => setNewAddress(target.value)} />
-         </div>
-         <div>
-             <input type="text" value={newCity} placeholder="City"
-                 onChange={({ target }) => setNewCity(target.value)} />
-         </div>
-         <div>
-             <input type="text" value={newPostalCode} placeholder="Postal code"
-                 onChange={({ target }) => setNewPostalCode(target.value)} />
+             <input type="text" value={newPassword} placeholder="Password"
+                 onChange={({ target }) => setNewPassword(target.value)} />
          </div>
          <div>
              <input type="text" value={newPhone} placeholder="Phone"
                  onChange={({ target }) => setNewPhone(target.value)} />
          </div>
          <div>
-             <input type="text" value={newFax} placeholder="Fax"
-                 onChange={({ target }) => setNewFax(target.value)} />
+             <input type="number" value={newAccessLevelId} placeholder="Access Level"
+                 onChange={({ target }) => setNewAccessLevelid(target.value)} />
          </div>
       
       <input type='submit' value='save' />
@@ -110,4 +96,4 @@ return(
 
 }
 
-export default CustomerAdd
+export default UserAdd
