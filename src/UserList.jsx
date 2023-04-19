@@ -36,7 +36,7 @@ return(
             </thead>
             <tbody>
         {users && users.map(u => (
-            <tr>
+            <tr key={u.userId}>
                 <td>{u.userName}</td>
                 <td>{u.firstName}</td>
                 <td>{u.lastName}</td>
